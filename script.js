@@ -62,21 +62,18 @@ document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
 
 // Video audio control - pause when leaving hero section
 const heroVideo = document.getElementById('heroVideo');
-const heroVideoMobile = document.getElementById('heroVideoMobile');
 const heroSection = document.getElementById('home');
 
 const videoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting) {
             heroVideo.pause();
-            heroVideoMobile.pause();
         } else {
             heroVideo.play();
-            heroVideoMobile.play();
         }
     });
 }, { threshold: 0.5 });
 
-if (heroSection) {
+if (heroVideo && heroSection) {
     videoObserver.observe(heroSection);
 }
